@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css'
+import img from '../images/logo.png'
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
-        
+              <img src={img} className='logo_image'/>
   
             <div>
                 <Link to="/Dashboard">

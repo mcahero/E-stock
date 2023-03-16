@@ -323,3 +323,30 @@
   .categories option:hover {
     background-color: green;
   }
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+
+  .table td {
+    padding: 8px;
+    text-align: center;
+    font-size: smaller;
+  }
+  
+  .table th {
+    background-color: #ddd;
+    font-weight: bold;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .table tr:hover {
+    background-color: #ddd;
+  }
+  

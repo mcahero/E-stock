@@ -24,7 +24,15 @@ export default function Stocks() {
 
   const addProduct = (product) => {
     setProducts([...products, product]);
+  
+    if (filteredProducts === products) {
+      setFilteredProducts([...products, product]);
+    } else if (filteredProducts[0].category === product.category) {
+      setFilteredProducts([...filteredProducts, product]);
+    }
   };
+  
+  
 
   
   const handleFilterChange = (e) => {

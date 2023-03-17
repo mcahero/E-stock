@@ -53,7 +53,7 @@ export default function AddProductModal({ showModal, handleCloseModal, addProduc
                     <option value='Junk Foods'>Junk Foods</option>
                     <option value='Drinks'>Drinks</option>
                     <option value='Hygiene Kit'>Hygiene Kit</option>
-                    <option value='Soon-to-expire'>Soon-to-expire</option>
+                    
                   </select>
                 </div>
 

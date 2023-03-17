@@ -25,6 +25,12 @@ export default function AddProductModal({ showModal, handleCloseModal, addProduc
     };
     
     addProduct(product);
+
+    setProductName('');
+    setCategory('');
+    setExpiryDate('');
+    setQuantity('');
+
     handleCloseModal();
   };
   
@@ -52,8 +58,7 @@ export default function AddProductModal({ showModal, handleCloseModal, addProduc
                     <option value='Canned Goods'>Canned Goods</option>
                     <option value='Junk Foods'>Junk Foods</option>
                     <option value='Drinks'>Drinks</option>
-                    <option value='Hygiene Kit'>Hygiene Kit</option>
-                    
+                    <option value='Hygiene Kit'>Hygiene Kit</option>  
                   </select>
                 </div>
 

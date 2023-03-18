@@ -191,7 +191,7 @@
   .modal-header{
     position:relative;
     margin-left: 40px;
-    margin-top: -4vh;
+    margin-top: -1vh;
     color:#060E3B;
     display: flex;
     flex-direction: row;
@@ -323,6 +323,7 @@
   }
 
   .table-container {
+    margin-top: 20px;
     width: 100%;
     height: 75vh;
     background-color: #F5F5F5;

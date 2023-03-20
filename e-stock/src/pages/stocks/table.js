@@ -22,8 +22,8 @@ export default function Table({ products }) {
           <td>{product.id}</td>
           <td>{product.productName}</td>
           <td>{product.category}</td>
-          <td>{format(product.dateCreated, 'dd MMMM yyyy')}</td>
-          <td>{product.expiryDate}</td>
+          <td>{format(new Date(product.dateCreated), 'dd-MM-yyyy')}</td>
+          <td>{format(new Date(product.expiryDate), 'dd-MM-yyyy')}</td>
           <td style={{color:"#029801"}}>{product.quantity}</td>
           
         </tr>

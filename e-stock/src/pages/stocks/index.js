@@ -2,7 +2,7 @@ import './styles.css'
 import "@fontsource/inter";
 import Sidebar from '../../sidebar'
 import { FaSearch } from 'react-icons/fa';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AddProductModal from './AddProductModal';
 import ProductTable from './table';
 import { isWithinInterval, addWeeks } from 'date-fns';
@@ -10,9 +10,22 @@ import { isWithinInterval, addWeeks } from 'date-fns';
 
 export default function Stocks() {
   const [showModal, setShowModal] = useState(false);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(() => {
+    const storedProducts = localStorage.getItem('products');
+    return storedProducts ? JSON.parse(storedProducts) : [];
+  });
+  
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  // Initialize filteredProducts state with all products
+  useEffect(() => {
+    setFilteredProducts(products);
+  }, [products]);
+
+  useEffect(() => {
+    localStorage.setItem('products', JSON.stringify(products));
+  }, [products]);
+  
 
   const handleAddProductClick = () => {
     setShowModal(true);
@@ -32,35 +45,31 @@ export default function Stocks() {
     }
   };
   
-  
-
-  
   const handleFilterChange = (e) => {
-  const selectedFilter = e.target.value;
+    const selectedFilter = e.target.value;
 
-  if (selectedFilter === 'all') {
-    setFilteredProducts(products);
-  } else if (selectedFilter === 'Canned Goods') {
-    const filtered = products.filter((product) => product.category === 'Canned Goods');
-    setFilteredProducts(filtered);
-  } else if (selectedFilter === 'Junk Foods') {
-    const filtered = products.filter((product) => product.category === 'Junk Foods');
-    setFilteredProducts(filtered);
-  } else if (selectedFilter === 'Drinks') {
-    const filtered = products.filter((product) => product.category === 'Drinks');
-    setFilteredProducts(filtered);
-  } else if (selectedFilter === 'Hygiene Kit') {
-    const filtered = products.filter((product) => product.category === 'Hygiene Kit');
-    setFilteredProducts(filtered);
-  }
-   else if (selectedFilter === 'Soon-to-expire') {
-    const filtered = products.filter((product) => isWithinInterval(new Date(product.expiryDate), {
-      start: new Date(),
-      end: addWeeks(new Date(), 3)
-    }));
-    setFilteredProducts(filtered);
-  }
-};
+    if (selectedFilter === 'all') {
+      setFilteredProducts(products);
+    } else if (selectedFilter === 'Canned Goods') {
+      const filtered = products.filter((product) => product.category === 'Canned Goods');
+      setFilteredProducts(filtered);
+    } else if (selectedFilter === 'Junk Foods') {
+      const filtered = products.filter((product) => product.category === 'Junk Foods');
+      setFilteredProducts(filtered);
+    } else if (selectedFilter === 'Drinks') {
+      const filtered = products.filter((product) => product.category === 'Drinks');
+      setFilteredProducts(filtered);
+    } else if (selectedFilter === 'Hygiene Kit') {
+      const filtered = products.filter((product) => product.category === 'Hygiene Kit');
+      setFilteredProducts(filtered);
+    } else if (selectedFilter === 'Soon-to-expire') {
+      const filtered = products.filter((product) => isWithinInterval(new Date(product.expiryDate), {
+        start: new Date(),
+        end: addWeeks(new Date(), 3)
+      }));
+      setFilteredProducts(filtered);
+    }
+  };
 
   
 

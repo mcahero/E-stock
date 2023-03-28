@@ -9,7 +9,10 @@ import { isWithinInterval, addWeeks } from 'date-fns';
 
 export default function Stocks() {
   const [showModal, setShowModal] = useState(false);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(
+    JSON.parse(localStorage.getItem('products')) || []
+  );
+  
 
   const [filteredProducts, setFilteredProducts] = useState(products);
 
@@ -23,13 +26,18 @@ export default function Stocks() {
 
   const addProduct = (product) => {
     setProducts([...products, product]);
-
+  
     if (filteredProducts === products) {
       setFilteredProducts([...products, product]);
     } else if (filteredProducts[0].category === product.category) {
       setFilteredProducts([...filteredProducts, product]);
     }
+  
+    // Store products in local storage
+    const updatedProducts = [...products, product];
+    localStorage.setItem('products', JSON.stringify(updatedProducts));
   };
+  
 
   const updateProductQuantity = (productId, newQuantity) => {
     const updatedProducts = products.map((product) => {

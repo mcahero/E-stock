@@ -1,28 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import "@fontsource/inter";
 import './styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
-export default function AddProductModal({ showModal, handleCloseModal }) {
+
+
+export default function AddProductModal({ showModal, handleCloseModal, addProduct }) {
+
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
   const [quantity, setQuantity] = useState('');
-  const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    const storedProducts = localStorage.getItem('products');
-    if (storedProducts) {
-      setProducts(JSON.parse(storedProducts));
-    }
-  }, []);
 
-  useEffect(() => {
-    localStorage.setItem('products', JSON.stringify(products));
-  }, [products]);
-
-  const addProduct = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const product = {
       id: Date.now(),
@@ -32,11 +25,14 @@ export default function AddProductModal({ showModal, handleCloseModal }) {
       quantity: quantity,
       dateCreated: new Date(),
     };
-    setProducts([...products, product]);
+
+    addProduct(product);
+
     setProductName('');
     setCategory('');
     setExpiryDate('');
     setQuantity('');
+
     handleCloseModal();
   };
 
@@ -44,6 +40,7 @@ export default function AddProductModal({ showModal, handleCloseModal }) {
     showModal && (
       <div className='modal-overlay' onClick={handleCloseModal}>
         <div className='modal' onClick={(e) => e.stopPropagation()}>
+
           <div className='modal-content'>
             <div className='modal-header'>
               <h2>Add Product</h2>
@@ -53,7 +50,7 @@ export default function AddProductModal({ showModal, handleCloseModal }) {
             </div>
 
             <div className='form'>
-              <form onSubmit={addProduct}>
+              <form onSubmit={handleSubmit}>
                 <input className='modal-input' type="text" value={productName} onChange={(event) => setProductName(event.target.value)} placeholder="Product Name" />
 
                 <div className='expiry'>
@@ -62,7 +59,7 @@ export default function AddProductModal({ showModal, handleCloseModal }) {
                     <option value='Canned Goods'>Canned Goods</option>
                     <option value='Junk Foods'>Junk Foods</option>
                     <option value='Drinks'>Drinks</option>
-                    <option value='Hygiene Kit'>Hygiene Kit</option>
+                    <option value='Hygiene Kit'>Hygiene Kit</option>  
                   </select>
                 </div>
 
@@ -70,14 +67,12 @@ export default function AddProductModal({ showModal, handleCloseModal }) {
                   <input placeholder="Expiry Date" className='expiry-input' value={expiryDate} onChange={(event) => setExpiryDate(event.target.value)} />
                   <FontAwesomeIcon icon={faCalendarAlt} className="calendar-icon" />
                 </div>
-
                 <input className='modal-input' type="number" value={quantity} onChange={(event) => setQuantity(event.target.value)} placeholder="Quantity" />
-
                 <button className='modal-button' type="submit">Add Product</button>
-
               </form>
             </div>
           </div>
+
         </div>
       </div>
     )

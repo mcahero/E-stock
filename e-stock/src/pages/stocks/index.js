@@ -2,30 +2,18 @@ import './styles.css'
 import "@fontsource/inter";
 import Sidebar from '../../sidebar'
 import { FaSearch } from 'react-icons/fa';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import AddProductModal from './AddProductModal';
 import ProductTable from './table';
 import { isWithinInterval, addWeeks } from 'date-fns';
 
 
+
 export default function Stocks() {
   const [showModal, setShowModal] = useState(false);
-  const [products, setProducts] = useState(() => {
-    const storedProducts = localStorage.getItem('products');
-    return storedProducts ? JSON.parse(storedProducts) : [];
-  });
-  
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
-  // Initialize filteredProducts state with all products
-  useEffect(() => {
-    setFilteredProducts(products);
-  }, [products]);
-
-  useEffect(() => {
-    localStorage.setItem('products', JSON.stringify(products));
-  }, [products]);
-  
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
   const handleAddProductClick = () => {
     setShowModal(true);
@@ -44,10 +32,12 @@ export default function Stocks() {
       setFilteredProducts([...filteredProducts, product]);
     }
   };
+   
+
   
   const handleFilterChange = (e) => {
     const selectedFilter = e.target.value;
-
+  
     if (selectedFilter === 'all') {
       setFilteredProducts(products);
     } else if (selectedFilter === 'Canned Goods') {
@@ -62,7 +52,8 @@ export default function Stocks() {
     } else if (selectedFilter === 'Hygiene Kit') {
       const filtered = products.filter((product) => product.category === 'Hygiene Kit');
       setFilteredProducts(filtered);
-    } else if (selectedFilter === 'Soon-to-expire') {
+    }
+     else if (selectedFilter === 'Soon-to-expire') {
       const filtered = products.filter((product) => isWithinInterval(new Date(product.expiryDate), {
         start: new Date(),
         end: addWeeks(new Date(), 3)
@@ -84,7 +75,6 @@ export default function Stocks() {
               <input className='input' placeholder='Quick Search' />
               <FaSearch className='search-icon' />
             </div>
-
               <p>Filter</p>
               <div className='select-container'>
               <select className='select' onChange={handleFilterChange}>
@@ -95,7 +85,6 @@ export default function Stocks() {
                   <option value='Hygiene Kit'>Hygiene Kit</option>
                   <option value='Soon-to-expire'>Soon-to-expire</option>
                 </select>
-
               </div>
             <div className='actions-container'>
               <button className='add-product-button' onClick={handleAddProductClick}>
@@ -105,7 +94,6 @@ export default function Stocks() {
           </div>
           <div className='table-container'>
           <ProductTable products={filteredProducts} />
-
           </div>
         </div>
       </div>

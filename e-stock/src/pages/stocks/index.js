@@ -9,9 +9,13 @@ import { isWithinInterval, addWeeks } from 'date-fns';
 
 export default function Stocks() {
   const [showModal, setShowModal] = useState(false);
-  const [products, setProducts] = useState(
-    JSON.parse(localStorage.getItem('products')) || []
-  );
+  const [products, setProducts] = useState(() => {
+    const productsFromStorage = Object.keys(localStorage)
+      .filter(key => key.startsWith("product-"))
+      .map(key => JSON.parse(localStorage.getItem(key)));
+    return productsFromStorage.length > 0 ? productsFromStorage : [];
+  });
+  
   
 
   const [filteredProducts, setFilteredProducts] = useState(products);
@@ -42,28 +46,35 @@ export default function Stocks() {
   const updateProductQuantity = (productId, newQuantity) => {
     const updatedProducts = products.map((product) => {
       if (product.id === productId) {
-        return { ...product, quantity: newQuantity };
+        const updatedProduct = { ...product, quantity: newQuantity };
+        localStorage.setItem(`product-${productId}`, JSON.stringify(updatedProduct));
+        return updatedProduct;
       } else {
         return product;
       }
     });
-
+  
     setProducts(updatedProducts);
-
+  
     if (filteredProducts === products) {
       setFilteredProducts(updatedProducts);
     } else {
       const updatedFilteredProducts = filteredProducts.map((product) => {
         if (product.id === productId) {
-          return { ...product, quantity: newQuantity };
+          const updatedProduct = { ...product, quantity: newQuantity };
+          localStorage.setItem(`product-${productId}`, JSON.stringify(updatedProduct));
+          return updatedProduct;
         } else {
           return product;
         }
       });
-
+  
       setFilteredProducts(updatedFilteredProducts);
     }
   };
+  
+
+
 
   const handleFilterChange = (e) => {
     const selectedFilter = e.target.value;

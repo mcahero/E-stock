@@ -23,6 +23,9 @@ export default function Table({ products, updateProductQuantity, setProducts }) 
     setProducts(filteredProducts); // update products state
   };
 
+  // Sort products by name
+  const sortedProducts = products.sort((a, b) => a.productName.localeCompare(b.productName));
+
   return (
     <table className='table'>
       <thead>
@@ -36,7 +39,7 @@ export default function Table({ products, updateProductQuantity, setProducts }) 
         </tr>
       </thead>
       <tbody>
-        {products.map((product, index) => (
+        {sortedProducts.map((product, index) => (
           <tr key={index}>
             <td>{product.id}</td>
             <td>{product.productName}</td>
@@ -48,7 +51,7 @@ export default function Table({ products, updateProductQuantity, setProducts }) 
                 type='number'
                 value={quantities[product.id] || product.quantity}
                 onChange={(e) => handleQuantityChange(product.id, e.target.value)}
-                style={{ color: "#029801", border:0, width:"50px", fontSize:"16px" }}
+                style={{ color: "#029801", border:0, width:"50px", fontSize:"16px", textAlign:"center" }}
               />
             </td>
           </tr>

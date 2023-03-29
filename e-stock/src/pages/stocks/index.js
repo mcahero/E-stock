@@ -16,6 +16,7 @@ export default function Stocks() {
     return productsFromStorage.length > 0 ? productsFromStorage : [];
   });
   
+  
 
   const [filteredProducts, setFilteredProducts] = useState(products);
 
@@ -72,6 +73,7 @@ export default function Stocks() {
     }
   };
   
+
 
 
   const handleFilterChange = (e) => {

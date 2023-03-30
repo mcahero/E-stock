@@ -7,7 +7,7 @@ import Card_c from '../../Components/Card_c'
 import Card_d from '../../Components/Card_d'
 import cartcon from '../../images/cart.png'
 import swcon from '../../images/log.png'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 export default function EmpDashboard() {
     return (

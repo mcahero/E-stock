@@ -1,24 +1,160 @@
-
 .dashboard {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 24px;
-    text-align: center;
-  }
-  .AppContainer{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-align: left;
-    width: 100px;
-    height: 250px;
-    background-color: #F5F5F5;
-  }
+  display: grid;
+  margin-left: 30px;
+  height: 100vh;
+  font-size: 24px;
+  grid-column-gap: 460px;
+  font-family: "Inter"; 
+}
+.swbutton {
+  font-size: .9rem;
+  font-weight: bold;
+  padding: .5rem 1rem;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  display: flex; 
+  align-items: center;
+  color: #060E3B;
+  text-decoration: none;
+}
+.Header-container{
+  grid-area: 1 / -1 / 2 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0 30px;
+}
+.dashboard-text {
+  align-self: flex;
+  color: #060E3B;
+}
+.Analytic-text{
+  text-align: center;
+  font-size: 40px;
+  color: #060E3B;
+}
+
+.swbutton:hover {
+  background-color: #f5f5f5; 
+}  
+.Carda-main {
+  grid-area: 2 / 1 / 2 / 4;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1.5rem 3rem;
+  margin: 0.5rem 0;
+  background-color: #6ec6ad;
+  border-radius: 20px;
+  height: 300px;
+  position: relative;
+}
+      .cart_main{
+      height: 450px; 
+      position: absolute;
+      margin-top: -30px;
+      top: 0;
+      right: 0;
+ }
+      .item-list {
+      list-style: none;
+      padding: 0;
+      color: #060E3B;
+}
+      .main-text {
+      display: flex start;
+      font-size: 1.3rem;
+      color: #060E3B;
+      margin-left: -7px; 
+}
+      .aitem {
+      padding: 15px;
+      background-color: #67BBA3;
+      margin: 16px;
+      margin-left: -16px; 
+      border-radius: 10px;
+      height: 20px;
+      width: 750px;
+}
+.InnerCarda_main {
+  background-color: #f5f5f5;
+  height: 20px;
+  width: 500px;
+  border-radius: 20px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Cardb-main {
+  grid-area: 3 / 1 / 3/ 4;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem 1rem;
+  margin: 0.5rem 0 ;
+  background-color: #F5F5F5;
+  border-radius: 20px;
+  height: 200px;
+  width: 435px;
+} 
+      .bitem {
+      padding: 10px;
+      background-color: #ffffff;
+      margin: 16px;
+      margin-left: 30px;
+      margin-right: 30px;
+      border-radius: 10px;
+      height: 20px;
+      width: 350px;  
+}      
+      .bitem-list {
+        list-style: none;
+        padding: 0;
+        color: #060E3B;
+}
+.Cardc-main {
+  grid-area: 3 / 2 / 3 / 4;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem 1rem;
+  margin: 0.5rem 4rem;
+  background-color: #FFD231;
+  border-radius: 20px;
+  height: 200px;
+  width: 275px;
+}
+
+.cardt-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.3rem;
+  color: #060E3B;
+}
+
+.ca-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 10rem;
+  color: #ffffff;
+}
+
+.Cardd-main {
+  grid-area: 3 / 3 / 3 / 4;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem 1rem;
+  margin: 0.5rem 0 ;
+  background-color: #F6ABC0;
+  border-radius: 20px;
+  height: 200px;
+  width: 275px;
+}
 
 
-  

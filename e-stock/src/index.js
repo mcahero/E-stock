@@ -4,6 +4,7 @@ import App from './App';
 import Dashboard from './pages/dashboard';
 import Stocks from './pages/stocks';
 import Logs from './pages/logs';
+import EmpDashboard from './pages/dashboard/Employee';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     {
       path: "/Dashboard",
       element: <Dashboard />,
+    },
+    {
+      path: "/EmpDashboard",
+        element: <EmpDashboard />,
     }
 ])
 

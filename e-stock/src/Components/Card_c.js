@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card_c = ({title,stockstext,Ctitle})  => {
+const Card_c = ({stockstext,Ctitle})  => {
 return (
     <div className="Cardc-main">
     <div> 

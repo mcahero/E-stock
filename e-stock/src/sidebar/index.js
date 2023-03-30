@@ -10,7 +10,7 @@ import logscon from '../images/logs.png'
 const Sidebar = () => {
   return (
     <div className="sidebar_main">
-      <img src={img} className="logo_img" />
+      <img src={img} className="logo_img" alt="logo_img" />
       <div className="button-container">
         <Link to="/Dashboard" className="link">
             <button className="button"> 

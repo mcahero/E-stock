@@ -5,7 +5,7 @@ import Card_a from '../../Components/Card_a'
 import Card_b from '../../Components/Card_b'
 import Card_c from '../../Components/Card_c'
 import Card_d from '../../Components/Card_d'
-import cartcon from '../../images/cart.png'
+
 import swcon from '../../images/log.png'
 import { Link } from 'react-router-dom';
 

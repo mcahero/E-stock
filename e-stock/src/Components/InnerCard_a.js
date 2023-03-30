@@ -1,6 +1,6 @@
 import React from 'react'
-import cartcon from '../images/cart.png'
-function InnerCard_a(props) {
+
+function InnerCard_a() {
   return (
     <div>
 

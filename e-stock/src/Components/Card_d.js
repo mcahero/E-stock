@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card_d = ({title,tbeext,Dtitle})  => {
+const Card_d = ({tbeext,Dtitle})  => {
 return (
     <div className="Cardd-main">
     <div> 

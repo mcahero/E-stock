@@ -1,8 +1,8 @@
 import React from "react";
-import InnerCard_a from "./InnerCard_a";
+
 import cartcon from '../images/cart.png'
 
-const Card_a = ({title,intext,Atitle})  => {
+const Card_a = ({Atitle})  => {
 return (
     <div className="Carda-main">
     <img src={cartcon} alt=" Cart" className="cart_main" img/> 

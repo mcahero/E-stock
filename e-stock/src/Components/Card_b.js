@@ -1,17 +1,22 @@
 import React from "react";
 
-const Card_b = ({title,intext,Btitle})  => {
-return (
+const Card_b = ({Btitle})  => {
+  const Products = JSON.parse(localStorage.getItem("products")) || []; // get stored products from local storage, default to empty array if null
+  
+  return (
     <div className="Cardb-main"> 
-    <div className="ctitle">{Btitle}</div>
+      <div className="ctitle">{Btitle}</div>
       <div className="cardt-text">Available Products</div>
-        <ul className="bitem-list">
-        <li className="bitem">Item 1</li>
-        <li className="bitem">Item 2</li>
-        <li className="bitem">Item 3</li>
-        </ul>
+      <ul className="bitem-list">
+        {Products && Products.map((product) => ( // check if storedProducts is not null before calling map
+          <li className="bitem" key={product.name}>
+            <p style={{}}>{product.productName}</p>
+            <a style={{ }}>{product.quantity}</a>
+          </li>
+        ))}
+      </ul>
     </div>
-)
-}
+  );
+};
 
 export default Card_b;

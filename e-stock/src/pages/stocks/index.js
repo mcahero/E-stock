@@ -6,28 +6,20 @@ import AddProductModal from './AddProductModal';
 import ProductTable from './table';
 import { isWithinInterval, addWeeks } from 'date-fns';
 
-
 export default function Stocks() {
   const [showModal, setShowModal] = useState(false);
-  const [products, setProducts] = useState(() => {
-    const productsFromStorage = Object.keys(localStorage)
-      .filter(key => key.startsWith("product-"))
-      .map(key => JSON.parse(localStorage.getItem(key)));
-    return productsFromStorage.length > 0 ? productsFromStorage : [];
-  });
-  
-  
+  const [products, setProducts] = useState(
+    JSON.parse(localStorage.getItem('products')) || []
+  );
+
 
   const [filteredProducts, setFilteredProducts] = useState(products);
-
   const handleAddProductClick = () => {
     setShowModal(true);
   };
-
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
   const addProduct = (product) => {
     setProducts([...products, product]);
   
@@ -42,43 +34,34 @@ export default function Stocks() {
     localStorage.setItem('products', JSON.stringify(updatedProducts));
   };
   
-
   const updateProductQuantity = (productId, newQuantity) => {
     const updatedProducts = products.map((product) => {
       if (product.id === productId) {
-        const updatedProduct = { ...product, quantity: newQuantity };
-        localStorage.setItem(`product-${productId}`, JSON.stringify(updatedProduct));
-        return updatedProduct;
+        return { ...product, quantity: newQuantity };
       } else {
         return product;
       }
     });
-  
+
     setProducts(updatedProducts);
-  
+
     if (filteredProducts === products) {
       setFilteredProducts(updatedProducts);
     } else {
       const updatedFilteredProducts = filteredProducts.map((product) => {
         if (product.id === productId) {
-          const updatedProduct = { ...product, quantity: newQuantity };
-          localStorage.setItem(`product-${productId}`, JSON.stringify(updatedProduct));
-          return updatedProduct;
+          return { ...product, quantity: newQuantity };
         } else {
           return product;
         }
       });
-  
+
       setFilteredProducts(updatedFilteredProducts);
     }
   };
-  
-
-
 
   const handleFilterChange = (e) => {
     const selectedFilter = e.target.value;
-
     if (selectedFilter === 'all') {
       setFilteredProducts(products);
     } else if (selectedFilter === 'Canned Goods') {
@@ -104,7 +87,6 @@ export default function Stocks() {
     }
   };
   
-
   return (
     <div className={`AppContainer ${showModal ? 'blur' : ''}`}>
       <Sidebar />
@@ -135,7 +117,6 @@ export default function Stocks() {
           </div>
           <div className='table-container'>
           <ProductTable products={filteredProducts} updateProductQuantity={updateProductQuantity} />
-
           </div>
         </div>
       </div>

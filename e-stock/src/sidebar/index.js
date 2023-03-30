@@ -27,7 +27,7 @@ const Sidebar = () => {
             <img src={logscon} alt="Logs" className="logs_main" /> 
             <span className="button-text"> Logs </span> </button>
         </Link>
-        <img src={imgd} className="photo_img" />
+        <img src={imgd} className="photo_img" alt="photo_img"/>
       </div>
     </div>
   );

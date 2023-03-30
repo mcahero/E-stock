@@ -14,7 +14,6 @@ export default function Dashboard() {
         <div className='AppContainer'>
                 <Sidebar/>
             <div className="dashboard">
-                
                 <div className="Header-container"> 
                 <span className="dashboard-text">Dashboard</span> 
                 <span className="Analytic-text">Analytic Overview</span>

@@ -1,6 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 .sidebar_main {
   width: 250px;
-  height: auto;
+  height: 100%;
   background-color: #F5F5F5;
   align-items: right;
   flex-direction: column;
@@ -81,10 +85,12 @@
 }
 
 .photo_img{
+  display: flex;
+  position: bottom 0;
   width: 200px;
   height: 250px;
   margin: 20px;
   align-content: flex-end;
-  margin-top: 35px;
+
   }
 

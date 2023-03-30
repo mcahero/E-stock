@@ -1,30 +1,91 @@
-.sidebar {
-    width: 350px;
-    height: 100%;
+.sidebar_main {
+    width: 250px;
+    height: auto;
+    background-color: #F5F5F5;
+    align-items: right;
+    flex-direction: column;
+  }
+
+  .button-container {
+    width: 10px;
+    height: auto;
     background-color: #F5F5F5;
     display: flex;
-    flex-direction: column;  
-    justify-content: flex-start;
+    flex-direction: column; 
     align-items: right center;
+    flex: 1;
+    margin: 6rem 0.5rem;
+    
   }
-  
+
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .button-text {
+    margin-left: 10px;
+  }
+
   .button {
     font-size: 1.2rem;
     font-weight: bold;
-    padding: 1rem 2rem;
-    margin: 0.5rem 0;
+    padding: 1rem 2.5rem;
+    margin: .65rem;
     background-color: #F5F5F5;
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
     cursor: pointer;
+    display: inline-flex; 
+    color: #060E3B;
+    text-decoration: none;  
   }
   
   .button:hover {
     background-color: #ffffff;
   }
-  .logo_image{
-    width: 35px;
-    height: 35px;
-    align-self: flex-start;
+
+  .dash_main{
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    display: flex;
   }
+
+  .stocks_main{
+    width: 25px;
+    height: 23px;
+    align-items: center;
+    
+  }
+
+  .logs_main{
+    width: 25px;
+    height: 23px;
+    align-items: center;
+    display: flex;
+  }
+
+  .log_main{
+    width: 23px;
+    height: 23px;
+    align-items: center;
+    display: flex;
+  }
+
+  .logo_img{
+    width: 200px;
+    height: 80px;
+    margin: 20px;
+    margin-bottom: auto;
+  }
+  
+  .photo_img{
+    width: 200px;
+    height: 250px;
+    margin: 20px;
+    align-content: flex-end;
+    margin-top: 35px;
+    }
+
   

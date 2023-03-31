@@ -76,6 +76,9 @@ export default function Stocks() {
     } else if (selectedFilter === 'Hygiene Kit') {
       const filtered = products.filter((product) => product.category === 'Hygiene Kit');
       setFilteredProducts(filtered);
+    } else if (selectedFilter === 'Other') {
+      const filtered = products.filter((product)=> product.category === 'Other' );
+      setFilteredProducts(filtered);
     } else if (selectedFilter === 'Soon-to-expire') {
       const filtered = products.filter((product) =>
         isWithinInterval(new Date(product.expiryDate), {
@@ -106,6 +109,7 @@ export default function Stocks() {
                   <option value='Junk Foods'>Junk Foods</option>
                   <option value='Drinks'>Drinks</option>
                   <option value='Hygiene Kit'>Hygiene Kit</option>
+                  <option value='Other'>Other</option>
                   <option value='Soon-to-expire'>Soon-to-expire</option>
                 </select>
               </div>

@@ -191,7 +191,6 @@
   .modal-header{
     position:relative;
     margin-left: 40px;
-    margin-top: -1vh;
     color:#060E3B;
     display: flex;
     flex-direction: row;

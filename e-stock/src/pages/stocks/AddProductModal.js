@@ -17,6 +17,32 @@ export default function AddProductModal({ showModal, handleCloseModal, addProduc
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if(!category.trim()){
+      alert('Please select Category');
+      return;
+    }
+  
+    // Check if productName is empty or contains only spaces
+    if (!productName.trim()) {
+      alert('Please enter a product name');
+      return;
+    }
+  
+    // Check if expiryDate is a valid date
+    const expiryDateObj = new Date(expiryDate);
+    if (isNaN(expiryDateObj.getTime())) {
+      alert('Please enter a valid expiry date');
+      return;
+    }
+  
+    // Check if quantity is greater than or equal to 1
+    if (quantity < 1) {
+      alert('Please enter a quantity of at least 1');
+      return;
+    }
+  
+    // Create the product object and add it
     const product = {
       id: Date.now(),
       productName: productName,
@@ -25,16 +51,18 @@ export default function AddProductModal({ showModal, handleCloseModal, addProduc
       quantity: quantity,
       dateCreated: new Date(),
     };
-
+  
     addProduct(product);
-
+  
+    // Clear the form inputs and close the modal
     setProductName('');
     setCategory('');
     setExpiryDate('');
     setQuantity('');
-
+  
     handleCloseModal();
   };
+  
 
   return (
     showModal && (
@@ -59,7 +87,8 @@ export default function AddProductModal({ showModal, handleCloseModal, addProduc
                     <option value='Canned Goods'>Canned Goods</option>
                     <option value='Junk Foods'>Junk Foods</option>
                     <option value='Drinks'>Drinks</option>
-                    <option value='Hygiene Kit'>Hygiene Kit</option>  
+                    <option value='Hygiene Kit'>Hygiene Kit</option>
+                    <option value='Other'>Other</option>  
                   </select>
                 </div>
 

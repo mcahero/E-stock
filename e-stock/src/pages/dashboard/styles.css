@@ -116,6 +116,7 @@
 } 
 
 .bitem {
+  position: relative;
   padding: 10px;
   background-color: #ffffff;
   margin: 16px;
@@ -126,22 +127,34 @@
   width: 350px;
   display: flex;
   flex-direction: row;  
+
 }
 .itemContainer{
-  height: 195px;
+  height: 185px;
   width: 435px;
   overflow: auto;
-}
-.bitem > * {
-  margin: 0 auto;
+  position: relative;
 }
 
-      .bitem-list {
+.bitem-list {
     
-        list-style: none;
-        padding: 0;
-        color: #060E3B;
+  list-style: none;
+  padding: 0;
+  color: #060E3B;
 }
+
+.pname-div{
+  display: flex;
+ 
+  width: 250px;
+  height: 30px;
+}
+.quanti-div{
+  text-align: right;
+  width: 100px;
+  height: 30px;
+}
+
 .Cardc-main {
   grid-area: 3 / 2 / 3 / 4;
   font-size: 1.2rem;
@@ -158,7 +171,7 @@
 .cardt-text {
   display: flex;
   justify-content: center;
-  align-items: center;
+
   text-align: center;
   font-size: 1.3rem;
   color: #060E3B;

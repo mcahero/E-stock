@@ -7,14 +7,16 @@ const Card_b = ({Btitle})  => {
     <div className="Cardb-main"> 
       <div className="ctitle">{Btitle}</div>
       <div className="cardt-text">Available Products</div>
+   
       <ul className="bitem-list">
         {Products && Products.map((product) => ( // check if storedProducts is not null before calling map
           <li className="bitem" key={product.name}>
-            <p style={{}}>{product.productName}</p>
-            <a style={{ }}>{product.quantity}</a>
+            <p>{product.productName}</p>
+            <p >{product.quantity}</p>
           </li>
         ))}
       </ul>
+
     </div>
   );
 };

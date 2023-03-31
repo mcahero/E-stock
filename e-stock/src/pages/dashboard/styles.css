@@ -127,7 +127,11 @@
   display: flex;
   flex-direction: row;  
 }
-
+.itemContainer{
+  height: 195px;
+  width: 435px;
+  overflow: auto;
+}
 .bitem > * {
   margin: 0 auto;
 }

@@ -7,7 +7,7 @@ const Card_b = ({Btitle})  => {
     <div className="Cardb-main"> 
       <div className="ctitle">{Btitle}</div>
       <div className="cardt-text">Available Products</div>
-   
+      <div className="itemContainer">
       <ul className="bitem-list">
         {Products && Products.map((product) => ( // check if storedProducts is not null before calling map
           <li className="bitem" key={product.name}>
@@ -16,7 +16,7 @@ const Card_b = ({Btitle})  => {
           </li>
         ))}
       </ul>
-
+      </div>
     </div>
   );
 };

@@ -42,9 +42,12 @@ export default function Stocks() {
         return product;
       }
     });
-
+  
     setProducts(updatedProducts);
-
+  
+    // Update the products in the local storage
+    localStorage.setItem('products', JSON.stringify(updatedProducts));
+  
     if (filteredProducts === products) {
       setFilteredProducts(updatedProducts);
     } else {
@@ -55,10 +58,11 @@ export default function Stocks() {
           return product;
         }
       });
-
+  
       setFilteredProducts(updatedFilteredProducts);
     }
   };
+  
 
   const handleFilterChange = (e) => {
     const selectedFilter = e.target.value;

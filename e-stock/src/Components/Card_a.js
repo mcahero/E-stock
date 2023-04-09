@@ -8,6 +8,14 @@ const Card_a = ({Atitle}) => {
     return product.originalQuantity - product.quantity;
   }
 
+  const sortedProducts = Products.map((product) => {
+    return {
+      ...product,
+      modifiedQuantity: calculateQuantityDiff(product),
+      modified: new Date(product.modifiedDate).getTime()
+    };
+  }).sort((a, b) => b.modifiedQuantity - a.modifiedQuantity);
+
   return (
     <div className="Carda-main">
       <img src={cartcon} alt=" Cart" className="cart_main" img/> 
@@ -15,15 +23,15 @@ const Card_a = ({Atitle}) => {
       <div className="main-text">Today's Sales</div>
       <div className="aitemContainer">
         <ul className="item-list">
-          {Products.map((product) => (
+          {sortedProducts.map((product) => (
             <li className="item-list" key={product.name}>
-              {calculateQuantityDiff(product) >= 1 && (
+              {product.modifiedQuantity >= 1 && (
                 <div className="aitem">
                   <div className="aitem-a">
                     <p>{product.productName}</p>
                   </div> 
                   <div className="aitem-q">
-                    <p>{calculateQuantityDiff(product)}</p>
+                    <p>{product.modifiedQuantity}</p>
                   </div>
                 </div>
               )}

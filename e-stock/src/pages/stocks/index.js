@@ -11,9 +11,8 @@ export default function Stocks() {
   const [products, setProducts] = useState(
     JSON.parse(localStorage.getItem('products')) || []
   );
-
-
   const [filteredProducts, setFilteredProducts] = useState(products);
+
   const handleAddProductClick = () => {
     setShowModal(true);
   };
@@ -37,7 +36,8 @@ export default function Stocks() {
   const updateProductQuantity = (productId, newQuantity) => {
     const updatedProducts = products.map((product) => {
       if (product.id === productId) {
-        return { ...product, quantity: newQuantity };
+        const originalQuantity = product.originalQuantity || product.quantity;
+        return { ...product, quantity: newQuantity, originalQuantity };
       } else {
         return product;
       }
@@ -53,7 +53,8 @@ export default function Stocks() {
     } else {
       const updatedFilteredProducts = filteredProducts.map((product) => {
         if (product.id === productId) {
-          return { ...product, quantity: newQuantity };
+          const originalQuantity = product.originalQuantity || product.quantity;
+          return { ...product, quantity: newQuantity, originalQuantity };
         } else {
           return product;
         }
@@ -62,6 +63,7 @@ export default function Stocks() {
       setFilteredProducts(updatedFilteredProducts);
     }
   };
+  
   
 
   const handleFilterChange = (e) => {

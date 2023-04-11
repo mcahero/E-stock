@@ -260,4 +260,29 @@
     width: 80%;
   }
 }
+  
+.modalBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 251, 251, 0.301);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalContainer{
+  position: relative;
+    background-color: #E8E6FE;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter";
 
+}

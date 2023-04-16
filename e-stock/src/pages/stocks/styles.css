@@ -216,9 +216,6 @@
   .close-modal-button:focus {
     color: #7070aa;
   }
-
- 
-  
   .form{
     display: flex;
     justify-content: center ;
@@ -381,4 +378,5 @@
     background-color: #ddd;
     
   }
+  
   

@@ -5,6 +5,7 @@ import Dashboard from './pages/dashboard';
 import Stocks from './pages/stocks';
 import Logs from './pages/logs';
 import EmpDashboard from './pages/dashboard/Employee';
+import EmployeeStocks from './pages/stocks/EmployeeStocks';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
     {
       path: "/Employee",
         element: <EmpDashboard />,
+    },
+    {
+      path: "/EmployeeStocks",
+        element: <EmployeeStocks />,
     }
 ])
 

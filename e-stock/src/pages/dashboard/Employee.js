@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Sidebar from '../../sidebar';
+import EmployeeSidebar from "../../EmployeeSidebar";
 import './styles.css'
 import Card_a from '../../Components/Card_a'
 import Card_b from '../../Components/Card_b'
@@ -13,7 +13,7 @@ export default function EmpDashboard() {
     const [openModal, setOpenModal] = useState(false);
     return (
         <div className='AppContainer'>
-            <Sidebar/>
+            <EmployeeSidebar/>
             <div className="dashboard">  
 
                 <div className="Header-container"> 

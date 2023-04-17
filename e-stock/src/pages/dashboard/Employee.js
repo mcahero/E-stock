@@ -24,7 +24,7 @@ export default function EmpDashboard() {
             onClick = {() => 
             {setOpenModal(true)}}> 
             <img src={swcon} alt="log" className="log_main" /> 
-            <span className="swbutton-text">Switch to Employee</span> </button>
+            <span className="swbutton-text">Switch to Admin</span> </button>
                 { openModal && <ModalAd closeModal={setOpenModal}/> }
                 </div>  
                 <Card_a title="Today Sales" intext="no text"/>

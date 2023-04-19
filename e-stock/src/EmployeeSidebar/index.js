@@ -22,7 +22,7 @@ const EmployeeSidebar = () => {
             <img src={treecon} alt="Stocks" className="stocks_main" /> 
             <span className="button-text">Stocks</span> </button>
         </Link>
-        <Link to="/Employee" className="link">
+        <Link to="/EmployeeLogs" className="link">
             <button className="button"> 
             <img src={logscon} alt="Logs" className="logs_main" /> 
             <span className="button-text"> Logs </span> </button>

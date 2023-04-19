@@ -6,6 +6,7 @@ import Stocks from './pages/stocks';
 import Logs from './pages/logs';
 import EmpDashboard from './pages/dashboard/Employee';
 import EmployeeStocks from './pages/stocks/EmployeeStocks';
+import EmpLogs from './pages/logs/empLogs';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/Logs",
         element: <Logs />,
+      },
+      {
+        path: "/EmployeeLogs",
+        element: <EmpLogs />,
       },
     {
       path: "/Dashboard",

@@ -44,12 +44,14 @@ export default function AddProductModal({ showModal, handleCloseModal, addProduc
   
     // Create the product object and add it
     const product = {
+  
       id: Date.now(),
       productName: productName,
       category: category,
       expiryDate: expiryDate,
       quantity: quantity,
       dateCreated: new Date(),
+      
     };
   
     addProduct(product);
@@ -70,12 +72,12 @@ export default function AddProductModal({ showModal, handleCloseModal, addProduc
         <div className='modal' onClick={(e) => e.stopPropagation()}>
 
           <div className='modal-content'>
-            <div className='modal-header'>
+            {/*<div className='modal-header'>
               <h2>Add Product</h2>
               <button className='close-modal-button' onClick={handleCloseModal}>
                 &times;
               </button>
-            </div>
+             </div>*/}
 
             <div className='form'>
               <form onSubmit={handleSubmit}>

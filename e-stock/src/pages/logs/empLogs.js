@@ -1,12 +1,11 @@
 import './styles.css'
 import "@fontsource/inter";
-import Sidebar from '../../sidebar'
 import React, { useState } from 'react';
 import ProductTable from './table';
 import { isWithinInterval, addWeeks } from 'date-fns';
+import EmployeeSidebar from '../../EmployeeSidebar';
 
-
-export default function Logs() {
+export default function EmpLogs() {
   const [showModal, setShowModal] = useState(false);
   const [products, setProducts] = useState([]);
 
@@ -64,7 +63,7 @@ export default function Logs() {
 
   return (
     <div className={`AppContainer ${showModal ? 'blur' : ''}`}>
-      <Sidebar />
+      <EmployeeSidebar />
       <div className="stocks">
         <div className='container'>
           <div className='header'>

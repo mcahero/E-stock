@@ -32,18 +32,26 @@ export default function Stocks() {
     const updatedProducts = [...products, product];
     localStorage.setItem('products', JSON.stringify(updatedProducts));
   };
-  
+
+  //add product and update -------------------------------------------------start
+  const transactionId = Date.now().toString();
+  const transactionDate = new Date().toISOString();
+
   const updateProductQuantity = (productId, newQuantity) => {
     const updatedProducts = products.map((product) => {
       if (product.id === productId) {
         const originalQuantity = product.originalQuantity || product.quantity;
-        return { ...product, quantity: newQuantity, originalQuantity };
+     
+        return { ...product, quantity: newQuantity, originalQuantity, transactionId, transactionDate, modifiedBy: "Admin",  };
       } else {
         return product;
       }
     });
+
+    
   
     setProducts(updatedProducts);
+
   
     // Update the products in the local storage
     localStorage.setItem('products', JSON.stringify(updatedProducts));
@@ -54,7 +62,7 @@ export default function Stocks() {
       const updatedFilteredProducts = filteredProducts.map((product) => {
         if (product.id === productId) {
           const originalQuantity = product.originalQuantity || product.quantity;
-          return { ...product, quantity: newQuantity, originalQuantity };
+          return { ...product, quantity: newQuantity, originalQuantity, transactionId, transactionDate, modifiedBy: "Admin" };
         } else {
           return product;
         }
@@ -63,6 +71,7 @@ export default function Stocks() {
       setFilteredProducts(updatedFilteredProducts);
     }
   };
+  //add product and update -------------------------------------------------end
   
   
 

@@ -13,7 +13,7 @@ export default function Table() {
     return {
       ...product,
       transactionId: isNaN(product.transactionId) ? product.id : product.transactionId,
-      modifiedBy: isNaN(product.modifiedBy) ? "Admin" : product.modifiedBy,
+     
       quantityRemoved: calculateQuantityDiff(product),
       transactionDate: isNaN(product.transactionDate) ? product.dateCreated : product.transactionDate,
     };

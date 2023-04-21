@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './styles.css';
 import { format } from 'date-fns';
 
 export default function Table({ products, updateProductQuantity, setProducts }) {
   const [quantities, setQuantities] = useState({});
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleQuantityChange = (productId, quantity) => {
     setQuantities({ ...quantities, [productId]: quantity });
@@ -26,9 +27,17 @@ export default function Table({ products, updateProductQuantity, setProducts }) 
       const filteredProducts = updatedProducts.filter((product) => product !== null);
       setProducts(filteredProducts); // update products state
 
-      event.target.blur();
+      setIsFocused(false); // exit the input field
     }
   };
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (isFocused && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isFocused]);
 
   // Sort products by name
   const sortedProducts = products.sort((a, b) => a.productName.localeCompare(b.productName));
@@ -55,11 +64,13 @@ export default function Table({ products, updateProductQuantity, setProducts }) 
             <td>{format(new Date(product.expiryDate), 'dd-MM-yyyy')}</td>
             <td>
               <input
+                ref={inputRef}
                 type='number'
                 value={quantities[product.id] || product.quantity}
                 onChange={(e) => handleQuantityChange(product.id, e.target.value)}
                 onKeyPress={(e) => handleQuantityKeyPress(e, product.id, e.target.value)}
                 style={{ color: "#029801", border:0, width:"50px", fontSize:"16px", textAlign:"center" }}
+                onFocus={() => setIsFocused(true)}
               />
             </td>
           </tr>

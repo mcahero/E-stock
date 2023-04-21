@@ -18,6 +18,7 @@ export default function Table() {
     const transactionId = isNaN(product.transactionId) ? product.id : product.transactionId;
     const transactionDate = isNaN(product.transactionDate) ? product.dateCreated : product.transactionDate;
 
+    
     // create a new log entry for each update
     if (diff > 0 && (!Logs.length || Logs[Logs.length - 1].quantity !== product.quantity)) {
       const logEntry = {

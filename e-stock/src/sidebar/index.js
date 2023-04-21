@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css'
-import img from '../images/logo.png'
+import adimg from '../images/logoad.png'
 import imgd from '../images/photo.png'
 import dashcon from '../images/dash.png'
 import treecon from '../images/tree.png'
@@ -10,7 +10,7 @@ import logscon from '../images/logs.png'
 const Sidebar = () => {
   return (
     <div className="sidebar_main">
-      <img src={img} className="logo_img" alt="logo_img" />
+      <img src={adimg} className="logo_img" alt="logo_img" />
       <div className="button-container">
         <Link to="/Dashboard" className="link">
             <button className="button"> 

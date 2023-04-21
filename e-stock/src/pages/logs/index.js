@@ -67,7 +67,7 @@ export default function Logs() {
       <Sidebar />
       <div className="stocks">
         <div className='container'>
-          <div className='header'>
+          <div className='header1'>
             <p>Filter</p>
                 <div className='select-container'>
                  <select className='select' onChange={handleFilterChange}>

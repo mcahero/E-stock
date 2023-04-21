@@ -6,43 +6,20 @@ export default function Table() {
 
   const calculateQuantityDiff = (product) => {
     const diff = product.originalQuantity - product.quantity;
-    if (isNaN(diff) || diff <= 0) {
-      return [];
-    } else {
-      const logs = [];
-      
-      let quantity = product.quantity;
-      for (let i = 1; i <= diff; i++) {
-        quantity--;
-        logs.push({
-          transactionId: `12345602356${i}`,
-          id: product.id,
-          productName: product.productName,
-          transactionDate: new Date().toISOString(),
-          quantity: quantity,
-          quantityRemoved: 1,
-          modifiedBy: product.modifiedBy
-        });
-      }
-      return logs;
-    }
+  return isNaN(diff) || diff < 0 ? 0 : diff;
   }
 
-  let logIndex = 1;
-  const sortedProducts = Products.flatMap((product) => {
-    const logs = calculateQuantityDiff(product);
-    logs.unshift({
-      transactionId: isNaN(product.transactionId) ? `12345602356${logIndex++}` : product.transactionId,
-      id: product.id,
-      productName: product.productName,
-      transactionDate: isNaN(product.transactionDate) ? new Date().toISOString() : product.transactionDate,
-      quantity: product.quantity,
-      quantityRemoved: 0,
-      modifiedBy: product.modifiedBy
-    });
-    return logs;
-  });
+  const sortedProducts = Products.map((product) => {
+    return {
+      ...product,
+      transactionId: isNaN(product.transactionId) ? product.id : product.transactionId,
+      modifiedBy: isNaN(product.modifiedBy) ? "Admin" : product.modifiedBy,
+      quantityRemoved: calculateQuantityDiff(product),
+      transactionDate: isNaN(product.transactionDate) ? product.dateCreated : product.transactionDate,
+    };
+  })
 
+  
   return (
     <table className='table'>
       <thead>
@@ -62,10 +39,12 @@ export default function Table() {
             <td>{product.transactionId}</td>
             <td>{product.id}</td>
             <td>{product.productName}</td>
-            <td>{format(new Date(product.transactionDate), 'dd MMMM yyyy')}</td>
-            <td style={{ color: "#029801" }}>{product.quantity}</td>
+            <td>{product.transactionDate && format(new Date(product.transactionDate), 'dd MMMM yyyy')}</td>
+            
+            <td  style={{ color: "#029801" }}>{product.quantity}</td>
             <td style={{ color: "#FF0100" }}>{product.quantityRemoved}</td>
             <td>{product.modifiedBy}</td>
+         
           </tr>
         ))}
       </tbody>

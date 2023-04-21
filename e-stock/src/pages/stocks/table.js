@@ -7,20 +7,27 @@ export default function Table({ products, updateProductQuantity, setProducts }) 
 
   const handleQuantityChange = (productId, quantity) => {
     setQuantities({ ...quantities, [productId]: quantity });
-    updateProductQuantity(productId, quantity);
+  };
 
-    const updatedProducts = products.map((product) => {
-      if (product.id === productId && quantity === 0) {
-        return null; // remove product if quantity becomes zero
-      } else if (product.id === productId) {
-        return { ...product, quantity }; // update product quantity
-      } else {
-        return product;
-      }
-    });
+  const handleQuantityKeyPress = (event, productId, quantity) => {
+    if (event.key === "Enter") {
+      updateProductQuantity(productId, quantity);
 
-    const filteredProducts = updatedProducts.filter((product) => product !== null);
-    setProducts(filteredProducts); // update products state
+      const updatedProducts = products.map((product) => {
+        if (product.id === productId && quantity === 0) {
+          return null; // remove product if quantity becomes zero
+        } else if (product.id === productId) {
+          return { ...product, quantity }; // update product quantity
+        } else {
+          return product;
+        }
+      });
+
+      const filteredProducts = updatedProducts.filter((product) => product !== null);
+      setProducts(filteredProducts); // update products state
+
+      event.target.blur();
+    }
   };
 
   // Sort products by name
@@ -51,6 +58,7 @@ export default function Table({ products, updateProductQuantity, setProducts }) 
                 type='number'
                 value={quantities[product.id] || product.quantity}
                 onChange={(e) => handleQuantityChange(product.id, e.target.value)}
+                onKeyPress={(e) => handleQuantityKeyPress(e, product.id, e.target.value)}
                 style={{ color: "#029801", border:0, width:"50px", fontSize:"16px", textAlign:"center" }}
               />
             </td>

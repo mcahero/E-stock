@@ -61,7 +61,7 @@ export default function EmployeeStocks() {
       const updatedFilteredProducts = filteredProducts.map((product) => {
         if (product.id === productId) {
           const originalQuantity = product.originalQuantity || product.quantity;
-          return { ...product, quantity: newQuantity, originalQuantity, transactionId, transactionDate, modifiedBy: "admin" };
+          return { ...product, quantity: newQuantity, originalQuantity, transactionId, transactionDate, modifiedBy: "Employee" };
         } else {
           return product;
         }

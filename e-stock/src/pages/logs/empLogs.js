@@ -6,30 +6,10 @@ import { isWithinInterval, addWeeks } from 'date-fns';
 import EmployeeSidebar from '../../EmployeeSidebar';
 
 export default function EmpLogs() {
-  const [showModal, setShowModal] = useState(false);
-  const [products, setProducts] = useState([]);
+  const [showModal, ] = useState(false);
+  const [products,] = useState([]);
 
   const [filteredProducts, setFilteredProducts] = useState(products);
-
-  const handleAddProductClick = () => {
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
-  const addProduct = (product) => {
-    setProducts([...products, product]);
-  
-    if (filteredProducts === products) {
-      setFilteredProducts([...products, product]);
-    } else if (filteredProducts[0].category === product.category) {
-      setFilteredProducts([...filteredProducts, product]);
-    }
-  };
-  
-  
 
   
   const handleFilterChange = (e) => {

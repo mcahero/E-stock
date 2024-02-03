@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card_b = ({Btitle})  => {
+const CardB = ({Btitle})  => {
   const Products = JSON.parse(localStorage.getItem("products")) || []; // get stored products from local storage, default to empty array if null
   
   return (
@@ -29,4 +29,4 @@ const Card_b = ({Btitle})  => {
   );
 };
 
-export default Card_b;
+export default CardB;

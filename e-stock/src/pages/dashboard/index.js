@@ -1,14 +1,13 @@
 import { useState } from "react";
 import Sidebar from '../../sidebar';
 import './styles.css'
-import Card_a from '../../Components/Card_a'
-import Card_b from '../../Components/Card_b'
-import Card_c from '../../Components/Card_c'
-import Card_d from '../../Components/Card_d'
+import CardA from '../../Components/Card_a'
+import CardB from '../../Components/Card_b'
+import CardC from '../../Components/Card_c'
+import CardD from '../../Components/Card_d'
 import Modal from '../../Components/Modal';
 
 import swcon from '../../images/log.png'
-import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
     const [openModal, setOpenModal] = useState(false);
@@ -27,10 +26,10 @@ export default function Dashboard() {
             <span className="swbutton-text">Switch to Employee</span> </button>
                 { openModal && <Modal closeModal={setOpenModal}/> }
                 </div>  
-                <Card_a title="Today Sales" intext="no text"/>
-                <Card_b title="Available Products" intext="My Card Text"/>
-                <Card_c/>
-                <Card_d title="To Be Expired" intext="My Card Text"/> 
+                <CardA title="Today Sales" intext="no text"/>
+                <CardB title="Available Products" intext="My Card Text"/>
+                <CardC/>
+                <CardD title="To Be Expired" intext="My Card Text"/> 
             </div>
             
       </div>

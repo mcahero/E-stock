@@ -1,7 +1,7 @@
 import React from "react";
 import cartcon from '../images/cart.png'
 
-const Card_a = ({Atitle}) => {
+const CardA = ({Atitle}) => {
   const Products = JSON.parse(localStorage.getItem("products")) || [];
 
   const calculateQuantityDiff = (product) => {
@@ -44,4 +44,4 @@ const Card_a = ({Atitle}) => {
   );
 }
 
-export default Card_a;
+export default CardA;

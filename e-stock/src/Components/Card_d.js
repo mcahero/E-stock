@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card_d = ({ tbeext, Dtitle }) => {
+const CardD = ({ tbeext, Dtitle }) => {
   const Products = JSON.parse(localStorage.getItem("products")) || []; // get stored products from local storage, default to empty array if null
 
   // Filter products that are expiring within 3 weeks
@@ -29,4 +29,4 @@ const Card_d = ({ tbeext, Dtitle }) => {
   );
 };
 
-export default Card_d;
+export default CardD;

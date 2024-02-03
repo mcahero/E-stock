@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './styles.css';
-import Sidebar from '../../sidebar';
 import { FaSearch } from 'react-icons/fa';
 import AddProductModal from './AddProductModal';
 import ProductTable from './table';
@@ -14,9 +13,6 @@ export default function EmployeeStocks() {
   );
   const [filteredProducts, setFilteredProducts] = useState(products);
 
-  const handleAddProductClick = () => {
-    setShowModal(true);
-  };
   const handleCloseModal = () => {
     setShowModal(false);
   };

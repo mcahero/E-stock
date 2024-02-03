@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card_c = ({ Ctitle }) => {
+const CardC = ({ Ctitle }) => {
   const products = JSON.parse(localStorage.getItem('products')) || [];
   const totalQuantity = products.reduce((total, product) => total + parseInt(product.quantity), 0);
 
@@ -15,4 +15,4 @@ const Card_c = ({ Ctitle }) => {
   );
 };
 
-export default Card_c;
+export default CardC;
